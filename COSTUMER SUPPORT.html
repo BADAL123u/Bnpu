@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BN LAST KING HACK - Feedback Support</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #0b1a0b, #0c240c, #0e300e);
+      color: #e8f5e8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 200, 100, 0.05) 1px, transparent 2px);
+      background-size: 30px 30px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .header-badge {
+      background: rgba(0, 30, 0, 0.7);
+      border: 1px solid #00cc66;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #00ffaa;
+      margin-bottom: 25px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 10px rgba(0, 255, 170, 0.2);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .card {
+      background: rgba(6, 22, 6, 0.92);
+      border: 1px solid rgba(0, 255, 136, 0.4);
+      border-radius: 22px;
+      padding: 42px 32px;
+      box-shadow:
+        0 10px 30px rgba(0, 30, 0, 0.6),
+        inset 0 0 15px rgba(0, 100, 50, 0.15);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #00ff88, transparent);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    h1 {
+      font-size: 30px;
+      background: linear-gradient(to right, #00ffaa, #00cc66);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 28px;
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .input-group {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      text-align: left;
+      color: #aaffcc;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 14px;
+      border: 2px solid rgba(0, 150, 80, 0.4);
+      background: rgba(0, 25, 10, 0.5);
+      color: #d0f0d0;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #00ff88;
+      box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.25);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #66cc99;
+    }
+
+    .file-input-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    .file-input-wrapper input[type="file"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .file-input-label {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: rgba(0, 30, 15, 0.6);
+      color: #aaffcc;
+      text-align: left;
+      border-radius: 14px;
+      border: 2px dashed rgba(0, 200, 100, 0.3);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .file-input-wrapper:hover .file-input-label {
+      border-color: #00ff88;
+      background: rgba(0, 40, 20, 0.7);
+    }
+
+    .file-input-wrapper input[type="file"]:focus + .file-input-label {
+      border-color: #00ff88;
+      box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.25);
+    }
+
+    button {
+      background: linear-gradient(135deg, #00cc66, #00ff88);
+      border: none;
+      padding: 16px;
+      color: #001a0a;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 14px;
+      width: 100%;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 18px rgba(0, 200, 100, 0.4);
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(0, 255, 136, 0.6);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .status {
+      margin-top: 22px;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+
+    .status.success {
+      background: rgba(0, 80, 0, 0.4);
+      border: 1px solid #00ff66;
+      color: #ccffdd;
+      display: block;
+      animation: pulse 1.5s;
+    }
+
+    .status.error {
+      background: rgba(80, 0, 0, 0.4);
+      border: 1px solid #ff6666;
+      color: #ffdddd;
+      display: block;
+      animation: pulse 1.5s;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    .telegram-section {
+      text-align: center;
+      padding: 24px;
+      background: rgba(4, 24, 4, 0.85);
+      border-radius: 20px;
+      border: 1px solid rgba(0, 200, 100, 0.5);
+      max-width: 520px;
+      margin: 30px auto 0;
+      box-shadow:
+        0 8px 20px rgba(0, 30, 0, 0.5),
+        inset 0 0 10px rgba(0, 150, 80, 0.1);
+    }
+
+    .telegram-section h2 {
+      color: #00ffaa;
+      margin-bottom: 14px;
+      font-size: 21px;
+      font-weight: 700;
+    }
+
+    .telegram-link {
+      display: inline-block;
+      background: linear-gradient(135deg, #00cc66, #00ff88);
+      color: #001a0a !important;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 16px rgba(0, 255, 136, 0.45);
+      letter-spacing: 0.8px;
+    }
+
+    .telegram-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 7px 22px rgba(0, 255, 136, 0.7);
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #66bb88;
+      max-width: 520px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-badge">BN LAST KING HACK — FEEDBACK PORTAL</div>
+  
+  <div class="container">
+    <div class="card">
+      <h1>Customer Support Feedback</h1>
+      
+      <div class="input-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" />
+      </div>
+      
+      <div class="input-group">
+        <label for="feedback">Your Message</label>
+        <textarea id="feedback" rows="4" placeholder="Describe your issue or suggestion..."></textarea>
+      </div>
+      
+      <div class="input-group">
+        <label for="screenshot">Attach Screenshot (Required)</label>
+        <div class="file-input-wrapper">
+          <input type="file" id="screenshot" accept="image/*" />
+          <div class="file-input-label" id="file-label">📁 Click to select an image...</div>
+        </div>
+      </div>
+      
+      <button onclick="sendFeedback()">SEND FEEDBACK</button>
+      <div id="status" class="status"></div>
+    </div>
+
+    <div class="telegram-section">
+      <h2>🚀 Join Our Official Telegram Channel</h2>
+      <a href="https://t.me/BNLASTKINGHACK" target="_blank" class="telegram-link">
+        ➤ @BN_OWNER 
+      </a>
+    </div>
+
+    <p class="footer-note">
+      All feedback is sent securely via Telegram. Ensure you upload a valid screenshot for faster support.
+    </p>
+  </div>
+
+  <script>
+    // Update file label on selection
+    document.getElementById('screenshot').addEventListener('change', function(e) {
+      const label = document.getElementById('file-label');
+      if (e.target.files.length > 0) {
+        label.textContent = '📁 ' + e.target.files[0].name;
+      } else {
+        label.textContent = '📁 Click to select an image...';
+      }
+    });
+
+    async function sendFeedback() {
+      const botToken = '7227611930:AAGhTHVrOxaLHZFytMiRtM09LnZebRy4nGk';
+      const chatId = '6105849915';
+
+      const name = document.getElementById('name').value.trim();
+      const feedback = document.getElementById('feedback').value.trim();
+      const fileInput = document.getElementById('screenshot');
+      const statusEl = document.getElementById('status');
+
+      statusEl.className = 'status';
+
+      if (!name || !feedback || fileInput.files.length === 0) {
+        statusEl.textContent = '⚠️ Please fill in all fields and upload a screenshot.';
+        statusEl.classList.add('error');
+        return;
+      }
+
+      statusEl.textContent = '📤 Sending your feedback...';
+      statusEl.classList.add('success');
+      
+      try {
+        const messageText = `<b>BN LAST KING Feedback</b>\n<b>Name:</b> ${name}\n<b>Feedback:</b> ${feedback}`;
+        await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: messageText,
+            parse_mode: 'HTML'
+          })
+        });
+
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('photo', fileInput.files[0]);
+
+        await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+          method: 'POST',
+          body: formData
+        });
+
+        statusEl.textContent = '✅ Feedback sent successfully!';
+        statusEl.classList.add('success');
+
+        document.getElementById('name').value = '';
+        document.getElementById('feedback').value = '';
+        document.getElementById('screenshot').value = '';
+        document.getElementById('file-label').textContent = '📁 Click to select an image...';
+
+      } catch (error) {
+        statusEl.textContent = '❌ Failed to send feedback. Please try again.';
+        statusEl.classList.add('error');
+      }
+    }
+  </script>
+</body>
+</html>
+
